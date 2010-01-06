@@ -1,11 +1,11 @@
 === Linkify Tags ===
-Contributors: Scott Reilly
+Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: tags, link, linkify, archives, list, template tag, coffee2code
-Requires at least: 2.5
-Tested up to: 2.8
-Stable tag: 1.0
-Version: 1.0
+Requires at least: 2.8
+Tested up to: 2.9.1
+Stable tag: 1.1
+Version: 1.1
 
 Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
@@ -54,7 +54,21 @@ No related tags.
 
 == Installation ==
 
-1. Unzip `linkify-tags.zip` inside the `/wp-content/plugins/` directory for your site
+1. Unzip `linkify-tags.zip` inside the `/wp-content/plugins/` directory for your site (or install via the built-in WordPress plugin installer)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
 1. Use the linkify_tags() template tag in one of your templates (be sure to pass it at least the first argument indicating what tag IDs and/or slugs to linkify -- the argument can be an array, a space-separate list, or a comma-separated list).  Other optional arguments are available to customize the output.
 
+
+== Changelog ==
+
+= 1.1 =
+* Add PHPDoc documentation
+* Add title attribute to link for each tag
+* Minor formatting tweaks
+* Note compatibility with WP 2.9+
+* Drop compatibility with WP older than 2.8
+* Update copyright date
+* Update readme.txt (including adding Changelog)
+
+= 1.0 =
+* Initial release

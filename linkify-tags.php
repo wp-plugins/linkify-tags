@@ -1,13 +1,18 @@
 <?php
+/**
+ * @package Linkify_Tags
+ * @author Scott Reilly
+ * @version 1.1
+ */
 /*
 Plugin Name: Linkify Tags
-Version: 1.0
+Version: 1.1
 Plugin URI: http://coffee2code.com/wp-plugins/linkify-tags
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Description: Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
-Compatible with WordPress 2.5+, 2.6+, 2.7+, 2.8+.
+Compatible with WordPress 2.8+, 2.9+.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
@@ -15,7 +20,7 @@ Compatible with WordPress 2.5+, 2.6+, 2.7+, 2.8+.
 Installation:
 
 1. Download the file http://coffee2code.com/wp-plugins/linkify-tags.zip and unzip it into your 
-/wp-content/plugins/ directory.
+/wp-content/plugins/ directory (or install via the built-in WordPress plugin installer).
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. Use the linkify_tags() template tag in one of your templates (be sure to pass it at least the first argument
 	indicating what tag IDs and/or slugs to linkify -- the argument can be an array, a space-separate list, or a
@@ -62,7 +67,7 @@ Displays:
 */
 
 /*
-Copyright (c) 2009 by Scott Reilly (aka coffee2code)
+Copyright (c) 2009-2010 by Scott Reilly (aka coffee2code)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
@@ -77,18 +82,18 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/*
-	Displays links to each of any number of tags specified via tag IDs/slugs
-	Arguments:
-	 $tags: A single tag ID/slug, or multiple tag IDs/slugs defined via an array, or multiple tag IDs/slugs
-					defined via a comma-separated and/or space-separated string
-	 $before 	: (optional) To appear before the entire tag listing (if tags exist or if 'none' setting is specified)
-	 $after 	: (optional) To appear after the entire tag listing (if tags exist or if 'none' setting is specified)
-	 $between	: (optional) To appear between all tags
-	 $before_last : (optional) To appear between the second-to-last and last element, if not specified, 'between' value is used	
-	 $none		: (optional) To appear when no tags have been found.  If blank, then the entire function doesn't display anything
+/**
+ * Displays links to each of any number of tags specified via tag IDs and/or slugs
+ * 
+ * @param int|string|array $tags A single tag ID/slug, or multiple tag IDs/slugs defined via an array, or multiple tag IDs/slugs defined via a comma-separated and/or space-separated string
+ * @param string $before (optional) Text to appear before the entire tag listing (if tags exist or if 'none' setting is specified)
+ * @param string $after (optional) Text to appear after the entire tag listing (if tags exist or if 'none' setting is specified)
+ * @param string $between (optional) Text to appear between all tags
+ * @param string $before_last (optional) Text to appear between the second-to-last and last element, if not specified, 'between' value is used	
+ * @param string $none (optional) Text to appear when no tags have been found.  If blank, then the entire function doesn't display anything
+ * @return none (Text is echoed; nothing is returned)
  */
-function linkify_tags($tags, $before = '', $after = '', $between = ', ', $before_last = '', $none = '') {
+function linkify_tags( $tags, $before = '', $after = '', $between = ', ', $before_last = '', $none = '' ) {
 	if ( empty($tags) )
 		$tags = array();
 	elseif ( !is_array($tags) )
@@ -106,7 +111,7 @@ function linkify_tags($tags, $before = '', $after = '', $between = ', ', $before
 			}
 			$title = $tag->name;
 			if ( $title )
-				$links[] = '<a href="' . get_tag_link($id) . '">' . $title . '</a>';
+				$links[] = '<a href="' . get_tag_link($id) . '" title="' . esc_attr(sprintf(__( "View all posts in %s"), $title)) . '">' . $title . '</a>';
 		}
 		if ( empty($before_last) ) $response = implode($links, $between);
 		else {
