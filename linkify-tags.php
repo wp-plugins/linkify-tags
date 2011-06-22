@@ -38,7 +38,7 @@ IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 require_once( dirname( __FILE__ ) . '/linkify-tags.widget.php' );
 
-if ( !function_exists( 'c2c_linkify_tags' ) ) :
+if ( ! function_exists( 'c2c_linkify_tags' ) ) :
 /**
  * Displays links to each of any number of tags specified via tag IDs and/or slugs
  *
@@ -55,7 +55,7 @@ if ( !function_exists( 'c2c_linkify_tags' ) ) :
 function c2c_linkify_tags( $tags, $before = '', $after = '', $between = ', ', $before_last = '', $none = '' ) {
 	if ( empty( $tags ) )
 		$tags = array();
-	elseif ( !is_array( $tags ) )
+	elseif ( ! is_array( $tags ) )
 		$tags = explode( ',', str_replace( array( ', ', ' ', ',' ), ',', $tags ) );
 
 	if ( empty( $tags ) ) {
@@ -70,7 +70,7 @@ function c2c_linkify_tags( $tags, $before = '', $after = '', $between = ', ', $b
 			} else {
 				$tag = get_term( $id, 'post_tag' );
 			}
-			if ( !$tag )
+			if ( ! $tag )
 				continue;
 			$title = $tag->name;
 			if ( $title )
@@ -106,7 +106,7 @@ function c2c_linkify_tags( $tags, $before = '', $after = '', $between = ', ', $b
 add_action( 'c2c_linkify_tags', 'c2c_linkify_tags', 10, 6 );
 endif;
 
-if ( !function_exists( 'linkify_tags' ) ) :
+if ( ! function_exists( 'linkify_tags' ) ) :
 /**
  * Displays links to each of any number of tags specified via tag IDs and/or slugs
  *

@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: tags, link, linkify, archives, list, widget, template tag, coffee2code
 Requires at least: 2.8
-Tested up to: 3.1
-Stable tag: 2.0
-Version: 2.0
+Tested up to: 3.2
+Stable tag: 2.0.1
+Version: 2.0.1
 
 Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
@@ -15,7 +15,7 @@ Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
 The plugin provides a widget called "Linkify Tags" as well as a template tag, `c2c_linkify_tags()`, to easily indicate tags to list and how to list them.  Tags are specified by either ID or slug.  See other parts of the documentation for example usage and capabilities.
 
-Links: [Plugin Homepage]:(http://coffee2code.com/wp-plugins/linkify-tags/) | [Author Homepage]:(http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/linkify-tags/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -144,6 +144,11 @@ Do:
 
 == Changelog ==
 
+= 2.0.1 =
+* Note compatibility through WP 3.2+
+* Minor code formatting changes (spacing)
+* Fix plugin homepage and author links in description in readme.txt
+
 = 2.0 =
 * Add Linkify Tags widget
 * Rename `linkify_tags()` to `c2c_linkify_tags()` (but maintain a deprecated version for backwards compatibility)
@@ -179,6 +184,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.0.1 =
+Trivial update: noted compatibility through WP 3.2+ and minor code formatting changes (spacing)
 
 = 2.0 =
 Feature update: added widget, deprecated `linkify_tags()` in favor of `c2c_linkify_tags()`, renamed action from 'linkify_tags' to 'c2c_linkify_tags', added Template Tags, Screenshots, and FAQ sections to readme, noted compatibility with WP 3.1+, and updated copyright date (2011).
