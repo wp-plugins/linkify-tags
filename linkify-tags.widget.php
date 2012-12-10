@@ -2,16 +2,18 @@
 /**
  * @package Linkify_Tags_Widget
  * @author Scott Reilly
- * @version 001
+ * @version 002
  */
 /*
  * Linkify Tags plugin widget code
  *
- * Copyright (c) 2011-2012 by Scott Reilly (aka coffee2code)
+ * Copyright (c) 2011-2013 by Scott Reilly (aka coffee2code)
  *
  */
 
-if ( class_exists( 'WP_Widget' ) && !class_exists( 'c2c_LinkifyTagsWidget' ) ) :
+defined( 'ABSPATH' ) or die();
+
+if ( class_exists( 'WP_Widget' ) && ! class_exists( 'c2c_LinkifyTagsWidget' ) ) :
 
 class c2c_LinkifyTagsWidget extends WP_Widget {
 	private $widget_id = 'linkify_tags';

@@ -5,9 +5,9 @@ Tags: tags, link, linkify, archives, list, widget, template tag, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.4
-Stable tag: 2.0.3
-Version: 2.0.3
+Tested up to: 3.5
+Stable tag: 2.0.4
+Version: 2.0.4
 
 Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
@@ -146,6 +146,13 @@ Do:
 
 == Changelog ==
 
+= 2.0.4 =
+* Add check to prevent execution of code if file is directly accessed
+* Note compatibility through WP 3.5+
+* Update copyright date (2013)
+* Create repo's WP.org assets directory
+* Move screenshot into repo's assets directory
+
 = 2.0.3 =
 * Re-license as GPLv2 or later (from X11)
 * Add 'License' and 'License URI' header tags to readme.txt and plugin file
@@ -197,6 +204,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.0.4 =
+Trivial update: noted compatibility through WP 3.5+
 
 = 2.0.3 =
 Trivial update: noted compatibility through WP 3.4+; explicitly stated license
