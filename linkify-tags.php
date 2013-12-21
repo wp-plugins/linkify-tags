@@ -2,11 +2,11 @@
 /**
  * @package Linkify_Tags
  * @author Scott Reilly
- * @version 2.0.4
+ * @version 2.1
  */
 /*
 Plugin Name: Linkify Tags
-Version: 2.0.4
+Version: 2.1
 Plugin URI: http://coffee2code.com/wp-plugins/linkify-tags/
 Author: Scott Reilly
 Author URI: http://coffee2code.com/
@@ -14,16 +14,16 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Description: Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
-Compatible with WordPress 2.8 through 3.5+.
+Compatible with WordPress 2.8 through 3.8+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/extend/plugins/linkify-tags/
+=>> Or visit: http://wordpress.org/plugins/linkify-tags/
 
 */
 
 /*
-	Copyright (c) 2009-2013 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2014 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -59,10 +59,11 @@ if ( ! function_exists( 'c2c_linkify_tags' ) ) :
  * @return none (Text is echoed; nothing is returned)
  */
 function c2c_linkify_tags( $tags, $before = '', $after = '', $between = ', ', $before_last = '', $none = '' ) {
-	if ( empty( $tags ) )
+	if ( empty( $tags ) ) {
 		$tags = array();
-	elseif ( ! is_array( $tags ) )
+	} elseif ( ! is_array( $tags ) ) {
 		$tags = explode( ',', str_replace( array( ', ', ' ', ',' ), ',', $tags ) );
+	}
 
 	if ( empty( $tags ) ) {
 		$response = '';
@@ -70,22 +71,28 @@ function c2c_linkify_tags( $tags, $before = '', $after = '', $between = ', ', $b
 		$links = array();
 		foreach ( $tags as $id ) {
 			if ( 0 == (int) $id ) {
+				if ( ! is_string( $id ) ) {
+					continue;
+				}
 				$tag = get_term_by( 'slug', $id, 'post_tag' );
-				if ( $tag )
+				if ( $tag ) {
 					$id = $tag->term_id;
+				}
 			} else {
 				$tag = get_term( $id, 'post_tag' );
 			}
-			if ( ! $tag )
+			if ( ! $tag ) {
 				continue;
+			}
 			$title = $tag->name;
-			if ( $title )
+			if ( $title ) {
 				$links[] = sprintf(
 					'<a href="%1$s" title="%2$s">%3$s</a>',
 					get_tag_link( $id ),
 					esc_attr( sprintf( __( "View all posts in %s" ), $title ) ),
 					$title
 				);
+			}
 		}
 		if ( empty( $before_last ) ) {
 			$response = implode( $between, $links );
@@ -98,13 +105,14 @@ function c2c_linkify_tags( $tags, $before = '', $after = '', $between = ', ', $b
 					$response = $links[0] . $before_last . $links[1];
 					break;
 				default:
-					$response = implode( $between, array_slice( $links, 0, $size-1 ) ) . $before_last . $links[$size-1];
+					$response = implode( $between, array_slice( $links, 0, $size-1 ) ) . $before_last . $links[ $size-1 ];
 			}
 		}
 	}
 	if ( empty( $response ) ) {
-		if ( empty( $none ) )
+		if ( empty( $none ) ) {
 			return;
+		}
 		$response = $none;
 	}
 	echo $before . $response . $after;
