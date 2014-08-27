@@ -5,8 +5,8 @@ Tags: tags, link, linkify, archives, list, widget, template tag, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.8
-Stable tag: 2.1
+Tested up to: 4.0
+Stable tag: 2.1.1
 
 Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
@@ -14,7 +14,7 @@ Turn a list of tag IDs and/or slugs into a list of links to those tags.
 
 The plugin provides a widget called "Linkify Tags" as well as a template tag, `c2c_linkify_tags()`, which allow you to easily specify tags to list and how to list them. Tags are specified by either ID or slug. See other parts of the documentation for example usage and capabilities.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/linkify-tags/) | [Plugin Directory Page](http://wordpress.org/plugins/linkify-tags/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/linkify-tags/) | [Plugin Directory Page](https://wordpress.org/plugins/linkify-tags/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -147,6 +147,12 @@ Do:
 
 == Changelog ==
 
+= 2.1.1 (2014-08-26) =
+* Minor plugin header reformatting
+* Change documentation links to wp.org to be https
+* Note compatibility through WP 4.0+
+* Add plugin icon
+
 = 2.1 (2013-12-20) =
 * Validate tag is either int or string before handling
 * Add unit tests
@@ -215,6 +221,9 @@ Do:
 
 
 == Upgrade Notice ==
+
+= 2.1.1 =
+Trivial update: noted compatibility through WP 4.0+; added plugin icon.
 
 = 2.1 =
 Moderate update: better validate data received; added unit tests; noted compatibility through WP 3.8+
